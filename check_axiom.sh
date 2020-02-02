@@ -1,9 +1,13 @@
 #!/bin/bash
 
+set -eux
+
+lean checker.lean
+
 echo -e "import .problem\n#print axioms" > print_prob_axiom.lean
-lean print_prob_axiom.lean > prob.axioms
+lean print_prob_axiom.lean | sort > prob.axioms
 echo -e "import .solution\n#print axioms" > print_sol_axiom.lean
-lean print_sol_axiom.lean > sol.axioms
+lean print_sol_axiom.lean | sort > sol.axioms
 
 diff sol.axioms prob.axioms > diff.txt
 
