@@ -1,7 +1,7 @@
 import .problem
 import .solution
 
-theorem checker(p q : Prop) : prob p q :=
+theorem checker: prob :=
   begin
-  exact (solution p q)
+  exact solution
   end
